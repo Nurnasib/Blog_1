@@ -18,7 +18,7 @@
                         <div class="form-group row mb-4">
                             <label for="horizontal-email-input" class="col-sm-3 col-form-label">Category Description</label>
                             <div class="col-sm-9">
-                                <textarea name="description" class="form-control" id="horizontal-email-input"></textarea>
+                                <textarea  class="form-control" name="description" id="horizontal-email-input"></textarea>
                             </div>
                         </div>
                         <div class="form-group row mb-4">

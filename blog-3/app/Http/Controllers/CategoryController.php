@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    private $category;
     private $categories;
     public function index()
     {
@@ -22,16 +23,34 @@ class CategoryController extends Controller
         $this->categories = Category::orderBy('id', 'desc')->get();
         return view('admin.category.manage', ['categories' => $this->categories]);
     }
-    public function edit()
+    public function edit($id)
     {
-        return view('admin.category.edit');
+        $this->category = Category::find($id);
+        return view('admin.category.edit', ['category'=>$this->category]);
     }
     public function update(Request $request, $id)
     {
-        return $request->all();
+        Category::updateCategory($request, $id);
+        return redirect('/manage-category')->with('message', 'Category info updated successfully');
     }
-    public function delete()
+    public function delete($id)
     {
-        return $id;
+        $this->category = Category::find($id);
+        $this->category->delete();
+
+        return redirect('/manage-category')->with('message', 'Category deleted successfully');
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
