@@ -40,6 +40,13 @@ class BlogController extends Controller
     }
     public function delete($id)
     {
-        return $id;
+        $this->blog = Blog::find($id);
+        $this->blog->delete();
+        return redirect()->back()->with('message', 'Blog info deleted successfully');
+    }
+    public function detail($id)
+    {
+        $this->blog = Blog::find($id);
+        return view('admin.blog.detail', ['blog' => $this->blog]);
     }
 }
